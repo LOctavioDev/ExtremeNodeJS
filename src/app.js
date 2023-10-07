@@ -1,7 +1,16 @@
 const express = require('express');
-const app = express(); 
+const morgan = require('morgan');
+const studentRouter = require('./routes/student.router');
+const app = express();
 
-app.listen(3000, () => {
-    console.log("server listening on port 3000");
+//SETTINGS
+app.set('PORT', process.env.PORT || 3000);
+app.set('view engine', 'ejs');
 
-})
+//MIDDLEARES
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(morgan('dev'));
+app.use(studentRouter);
+
+module.exports = app;
