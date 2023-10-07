@@ -26,6 +26,12 @@ studentDAO.updateOne = async(dni, student) => {
 
 }
 
+studentDAO.deleteOne = async(dni) => {
+    await Student.deleteOne({dni:dni});
+    return "student deleted";
+
+}
+
 
 module.exports = studentDAO;
 

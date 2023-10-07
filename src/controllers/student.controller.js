@@ -63,5 +63,20 @@ studentController.updateOne = async(req, res) => {
 
 }
 
+studentController.deleteOne = async(req, res) => {
+    studentDAO.deleteOne(req.params.dni)
+    .then(result => {
+        res.json({
+            status: result
+        })
+    })
+    .catch(err => {
+        res.json({
+            status: "request failed"
+        })
+    });
+
+}
+
 
 module.exports = studentController;
