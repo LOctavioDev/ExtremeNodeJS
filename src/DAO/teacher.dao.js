@@ -6,8 +6,8 @@ teacherDAO.getAll = async() => {
     return teachers;
 }
 
-teacherDAO.getOne = async(dni) => {
-    const teacher = await Teacher.findOne({dni:dni});
+teacherDAO.getOne = async(employeenumber) => {
+    const teacher = await Teacher.findOne({employeenumber:employeenumber});
     return teacher;
 }
 
@@ -17,13 +17,13 @@ teacherDAO.insertOne = async(teacher) => {
     return "teacher saved";
 }
 
-teacherDAO.updateOne = async(dni, teacher) => {
-    await Teacher.updateOne({dni:dni}, teacher);
+teacherDAO.updateOne = async(employeenumber, teacher) => {
+    await Teacher.updateOne({employeenumber:employeenumber}, teacher);  
     return "teacher updated"
 }
 
-teacherDAO.deleteOne = async(dni) => {
-    await Teacher.deleteOne({dni:dni});
+teacherDAO.deleteOne = async(employeenumber) => {
+    await Teacher.deleteOne({employeenumber:employeenumber});
     return  "teacher delted";
 }
 

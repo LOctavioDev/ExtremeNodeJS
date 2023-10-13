@@ -1,13 +1,16 @@
 const { Schema, model } = require('mongoose');
 const teacherSchema = new Schema({
-  dni: {
+  employeenumber: {
     type: Number,
     required: true,
     unique: true
   },
   name: String,
-  lastName: String,
-  subjects: [String], // array para almacenar las asignaturas que enseña el profesor
+  lastname: String,
+  profession: String,
+  area: String,
+  salario: Number,
+  subjects: [String]
 }, {
   versionKey: false,
   timestamps: true

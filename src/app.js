@@ -14,7 +14,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(morgan('dev'));
 
 // Asocia el enrutador de estudiantes y el enrutador de profesores a sus respectivos prefijos
-app.use('/students', studentRouter); // Asocia el enrutador de estudiantes a /students
-app.use('/teachers', teacherRouter); // Asocia el enrutador de profesores a /teachers
+app.use('/api/students', studentRouter); // Asocia el enrutador de estudiantes a /students
+app.use('/api/teachers', teacherRouter); // Asocia el enrutador de profesores a /teachers
 
 module.exports = app;

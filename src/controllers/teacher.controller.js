@@ -15,9 +15,9 @@ teacherController.getAll = async (req, res) => {
 
 
   teacherController.getOne = async (req, res) => {
-    teacherDAO.getOne(req.params.dni)
+    teacherDAO.getOne(req.params.employeenumber)
       .then(teacher => {
-        if (teacher) {
+        if (teacher!=null) {
           res.json(teacher);
         } else {
           res.status(404).json({
@@ -50,7 +50,7 @@ teacherController.insertOne = async(req, res) => {
 }
 
 teacherController.updateOne = async(req, res) => {
-    teacherDAO.updateOne(req.params.dni, req.body)
+    teacherDAO.updateOne(req.params.employeenumber, req.employeenumber)
     .then(result => {
         res.json({
             status: result
@@ -65,7 +65,7 @@ teacherController.updateOne = async(req, res) => {
 }
 
 teacherController.deleteOne = async(req, res) => {
-    teacherDAO.deleteOne(req.params.dni)
+    teacherDAO.deleteOne(req.params.employeenumber)
     .then(result => {
         res.json({
             status: result
