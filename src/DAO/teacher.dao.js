@@ -6,12 +6,12 @@ teacherDAO.getAll = async() => {
     return teachers;
 }
 
-teacherDAO.getOne = async() => {
-    const teacher = await Tearcher.findOne({dni:dni});
+teacherDAO.getOne = async(dni) => {
+    const teacher = await Teacher.findOne({dni:dni});
     return teacher;
 }
 
-teacherDAO.insterOne = async() => {
+teacherDAO.insertOne = async(teacher) => {
     const teacherSaved = new Teacher(teacher);
     await teacherSaved.save();
     return "teacher saved";

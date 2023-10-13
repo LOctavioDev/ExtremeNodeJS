@@ -1,5 +1,20 @@
-const  teacherController = require('../controllers/teacher.controller');
-const {Router} = require('express');
+const teacherController = require('../controllers/teacher.controller');
+const { Router } = require('express');
 const router = Router();
 
-module.exports
+// Obtener todos los profesores
+router.get('/getAll', teacherController.getAll);
+
+// Obtener un profesor por su número de identificación (dni)
+router.get('/getOne/:dni', teacherController.getOne);
+
+// Agregar un nuevo profesor
+router.post('/insertOne', teacherController.insertOne);
+
+// Actualizar los datos de un profesor por su número de identificación 
+router.put('/updateOne/:dni', teacherController.updateOne);
+
+// Eliminar un profesor por su número de identificación (dni)
+router.delete('/deleteOne/:dni', teacherController.deleteOne);
+
+module.exports = router;

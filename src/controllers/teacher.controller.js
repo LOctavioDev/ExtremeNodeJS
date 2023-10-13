@@ -1,36 +1,37 @@
 const teacherDAO = require('../DAO/teacher.dao');
 const teacherController = {}
 
-teacherController.getAll = async(req, res) => {
+teacherController.getAll = async (req, res) => {
     teacherDAO.getAll()
-    .then(teacher => {
+      .then(teachers => {
         res.json(teachers);
-    })
-    .catch(err => {
-        res.json({
-            status: "request failed"
-        })
-    });
-    
-
-}
-
-
-teacherController.getOne = async(req, res) => {
-    teacherDAO.getOne(req.params.dni)
-    .then(teacher => {
-        if(teacher != null)
-            res.json(teacher)
-        else
-            res.json({
-                status: "not found"
+      })
+      .catch(err => {
+        res.status(500).json({
+          status: "request failed"
         });
-    })
-    .catch(err => {
-        res.json(err);
-    });
+      });
+  }
 
-}
+
+  teacherController.getOne = async (req, res) => {
+    teacherDAO.getOne(req.params.dni)
+      .then(teacher => {
+        if (teacher) {
+          res.json(teacher);
+        } else {
+          res.status(404).json({
+            status: "not found"
+          });
+        }
+      })
+      .catch(err => {
+        res.status(500).json({
+          status: "request failed",
+          error: err.message 
+        });
+      });
+  }
 
 
 teacherController.insertOne = async(req, res) => {
