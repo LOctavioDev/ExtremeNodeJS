@@ -5,7 +5,7 @@ const router = Router();
 router.get('/getAll', studentController.getAll);
 router.get('/getOne/:dni', studentController.getOne);
 router.post('/insertOne', studentController.insertOne);
-router.put('/updateOne/:dni', studentController.updateOne);
-router.delete('/deleteOne/:dni', studentController.deleteOne);
+router.post('/updateOne/:dni', studentController.updateOne);
+router.get('/deleteOne/:dni', studentController.deleteOne);
 
 module.exports = router;

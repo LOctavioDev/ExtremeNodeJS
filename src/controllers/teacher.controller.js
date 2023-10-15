@@ -4,7 +4,7 @@ const teacherController = {}
 teacherController.getAll = async (req, res) => {
     teacherDAO.getAll()
       .then(teachers => {
-        res.json(teachers);
+        res.render('../src/views/indexteachers', {teachers})
       })
       .catch(err => {
         res.status(500).json({
@@ -18,7 +18,7 @@ teacherController.getAll = async (req, res) => {
     teacherDAO.getOne(req.params.employeenumber)
       .then(teacher => {
         if (teacher!=null) {
-          res.json(teacher);
+          res.render('../src/views/editteachers', {teacher});
         } else {
           res.status(404).json({
             status: "not found"
@@ -37,9 +37,8 @@ teacherController.getAll = async (req, res) => {
 teacherController.insertOne = async(req, res) => {
     teacherDAO.insertOne(req.body)
     .then(result => {
-        res.json({
-            status: result
-        })
+          res.redirect('/api/teachers/getAll');
+          
     })
     .catch(err => {
         res.json({
@@ -52,9 +51,8 @@ teacherController.insertOne = async(req, res) => {
 teacherController.updateOne = async(req, res) => {
     teacherDAO.updateOne(req.params.employeenumber, req.employeenumber)
     .then(result => {
-        res.json({
-            status: result
-        })
+       res.redirect('/api/teachers/getAll');
+
     })
     .catch(err => {
         res.json({
@@ -67,9 +65,8 @@ teacherController.updateOne = async(req, res) => {
 teacherController.deleteOne = async(req, res) => {
     teacherDAO.deleteOne(req.params.employeenumber)
     .then(result => {
-        res.json({
-            status: result
-        })
+      res.redirect('/api/teachers/getAll');
+
     })
     .catch(err => {
         res.json({

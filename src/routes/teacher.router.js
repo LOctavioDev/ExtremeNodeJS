@@ -12,9 +12,9 @@ router.get('/getOne/:employeenumber', teacherController.getOne);
 router.post('/insertOne', teacherController.insertOne);
 
 // Actualizar los datos de un profesor por su número de identificación 
-router.put('/updateOne/:employeenumber', teacherController.updateOne);
+router.post('/updateOne/:employeenumber', teacherController.updateOne);
 
 // Eliminar un profesor por su número de identificación (dni)
-router.delete('/deleteOne/:employeenumber', teacherController.deleteOne);
+router.get('/deleteOne/:employeenumber', teacherController.deleteOne);
 
 module.exports = router;

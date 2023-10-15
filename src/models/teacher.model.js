@@ -9,8 +9,7 @@ const teacherSchema = new Schema({
   lastname: String,
   profession: String,
   area: String,
-  salario: Number,
-  subjects: [String]
+  salario: Number
 }, {
   versionKey: false,
   timestamps: true
